@@ -1,3 +1,4 @@
+//Controller
 module.exports = function($scope, $timeout, FacePPService) {
 	'use strict';
 
@@ -14,7 +15,13 @@ module.exports = function($scope, $timeout, FacePPService) {
       },0);
     }
   };
+  $scope.images = [""]
+  $scope.changeImage = function (imgUrl) {
+    $scope.imageUrl = imgUrl;
+    FacePPService.request($scope.imageUrl, $scope.facePPCallback);
+  }
   $scope.imageUrl = FacePPService.defaultImageUrl;
-  FacePPService.request(FacePPService.defaultImageUrl, $scope.facePPCallback);
+  
+  FacePPService.request($scope.imageUrl, $scope.facePPCallback);
 
 };

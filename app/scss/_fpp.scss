@@ -1,0 +1,15 @@
+@import '_topcoat';
+
+.fpp {
+  
+  .fppImage{
+    position:absolute;
+  }
+  .fppOverlay{
+    position:absolute;
+  }
+  .wrapper{
+    position:absolute;
+    border:4px dotted #800080;
+  }
+}

@@ -1,0 +1,32 @@
+<div class='fpp'>
+  <div class='wrapper' style="height:{{imageH}}px;width:{{imageW}}px;">
+    <img class='fppImage' src='{{fppsrc}}'/>
+    <div ng-if="imageW != undefined">
+      <svg class='fppOverlay' version="1.1" baseProfile="full" width="{{imageW||'300'}}" height="{{imageH||'300'}}" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <g id="eye">
+            <circle class="eyeOutline" cx="-4" cy="-4" r="8.5" fill="black" />
+            <circle class="eye" cx="-4" cy="-4" r="8" fill="white" />
+            <circle class="eyeIris" cx="-4" cy="-4"  r="3" fill="blue" />
+            <circle class="eyePupil" cx="-4" cy="-4"  r=".8" fill="black" />
+          </g>
+          <g id="mouth">
+            <path class="lipsOutline" d="M0,0  C00,25 100,25  100,0" fill="transparent" stroke="white" stroke-width="12"/>
+            <path class="lips" d="M0,0  C0,25 100,25  100,0" fill="transparent" stroke="black" stroke-width="10"/>
+          </g>
+        </defs>
+        <g class="face" ng-repeat="face in faces">
+          <ellipse class="faceOutline" cx="{{face.position.center.x}}%" cy="{{face.position.center.y}}%"  rx="{{(face.position.width / 2) + 2}}%" ry="{{(face.position.height/2) + 2}}%" stroke="white" fill="transparent"/>
+          <ellipse class="faceOutline" cx="{{face.position.center.x}}%" cy="{{face.position.center.y}}%"  rx="{{(face.position.width/2)}}%" ry="{{(face.position.height/2)}}%" stroke="black" fill="transparent"/>
+          <use class='rEye' x="{{face.position.eye_right.x||'0'}}%" y="{{face.position.eye_right.y||'0'}}%"  xlink:href="#eye"/>
+          <use class='lEye' x="{{face.position.eye_left.x||'0'}}%" y="{{face.position.eye_left.y||'0'}}%"  xlink:href="#eye"/>
+          <!-- <use class='mouth' x="{{face.position.mouth_left.x}}%" y="{{ face.position.mouth_left.y }}%" xlink:href="#mouth"/> -->
+          <path class="lips" d="{{face.mouthPath}}" fill="transparent" stroke="#f0f" stroke-width="10"/>
+        </g>
+      </svg>
+    </div>
+    <div class="face" ng-repeat="face in faces">
+      <p>faceid: {{face.face_id}}</p>
+    </div>
+  </div>
+</div>

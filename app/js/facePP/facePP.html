@@ -1,10 +1,14 @@
-Face PP:
-
-<img ng-src="{{imageUrl}}" face-p-p-hud="{{results}}"/>
+<h4>Face PP:</h4>
+<button class="topcoat-icon-button" ng-click="changeImage('https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-prn2/v/t1.0-9/58502_662039186245_707454_n.jpg?oh=f38a0a6208d7840855822250cc2a7e03&oe=54D59C45&__gda__=1427968135_df89f8e2746c7ad3b0d9b52b1727086b')">
+  Dinner at the Heaths
+</button>
+<button class="topcoat-icon-button" ng-click="changeImage('https://scontent-b-lga.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/542862_10100424315994385_1614250756_n.jpg?oh=b55878a86b145a486c7a7cad9cd80271&oe=54E9B817')">
+  Jacob
+</button>
+<button class="topcoat-icon-button" ng-click="changeImage('https://scontent-b-lga.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/164160_691464392895_3756847_n.jpg?oh=a098e5e292eb74c65bf6d5554fb7f65b&oe=54EAD461')">
+  Default
+</button>
 
 <br/>
+<face-p-p-hud data-src="imageUrl" data-results="{{results}}"/>
 
-<pre>
-  resultsString: {{resultsStringified}}
-  results: {{results}}
-</pre>
