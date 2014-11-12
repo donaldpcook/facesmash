@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="facesmash">
   <head>
   <title></title>
 
@@ -10,9 +10,12 @@
 
   </head>
 
-  <body>
+  <body ng-controller="AppController">
 
-  <script src="js/app.js"></script>
+    <div ui-view="instagramLogin"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/templates.js"></script>
   </body>
 
 </html>

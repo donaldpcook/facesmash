@@ -1,6 +1,4 @@
-# fronteee
-
-My front-end boilerplate. This is the bare minimum that I use on every single front-end project.
+# 
 
 -----
 ## Dependencies

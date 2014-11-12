@@ -10,7 +10,9 @@ var gulp = require('gulp'),
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
     sass = require('gulp-ruby-sass'),
-    prefix = require('gulp-autoprefixer');
+    prefix = require('gulp-autoprefixer'),
+    concat = require('gulp-concat'),
+    ngHtml2Js = require('gulp-ng-html2js');
 
 // standard LiveReload port
 var port = 35729;
@@ -43,6 +45,17 @@ gulp.task('lr', function() {
   tinylr().listen(port);
 });
 
+gulp.task('buildTemplates', function() {
+  gulp.src('./app/js/**/*.html')
+    .pipe(ngHtml2Js({
+      prefix: '/',
+      moduleName: 'partials'
+    }))
+    .pipe(concat('templates.js'))
+    .pipe(gulp.dest('./dest/js'))
+    //.pipe(connect.reload());
+});
+
 gulp.task('serve', function() {
   connect()
     .use(connectLivereload())
@@ -50,10 +63,11 @@ gulp.task('serve', function() {
     .listen(3000);
 });
 
-gulp.task('default', ['move', 'sass', 'browserify', 'lr', 'serve'], function() {
+gulp.task('default', ['buildTemplates', 'move', 'sass', 'browserify', 'lr', 'serve'], function() {
   gulp.watch('app/index.html', ['move']);
   gulp.watch('app/scss/**', ['sass']);
   gulp.watch('app/js/**/*.js', ['browserify']);
+  gulp.watch('app/js/**/*.html', ['buildTemplates']);
 
   gulp.watch('dest/**/*.html', function(event) {
     tinylr.changed(path.relative(__dirname, event.path));
