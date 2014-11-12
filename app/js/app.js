@@ -14,6 +14,10 @@ angular.module('facesmash', ['ui.router', 'partials'])
         'instagramLogin': {
           controller: 'InstagramController',
           templateUrl: '/instagram/instagram.html'
+        },
+        'facePP': {
+          controller: 'FacePPController',
+          templateUrl: '/facePP/facePP.html'
         }
       }
     });
@@ -31,10 +35,13 @@ angular.module('facesmash', ['ui.router', 'partials'])
     });
   }])
 
-  .factory('FacePP', require('./services/facepp'))
+  .directive('facePPHud', require('./facePP/directives/facePPHud'))
+  
+  .service('FacePPService', require('./services/facepp'))
   .factory('Instagram', require('./services/instagram'))
 
   .controller('InstagramController', require('./instagram/instagram'))
+  .controller('FacePPController', require('./facePP/facePP'))
 
   .controller('AppController', function() {
   });

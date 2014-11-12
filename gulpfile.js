@@ -20,6 +20,8 @@ var port = 35729;
 gulp.task('move', function() {
   gulp.src('./app/index.html')
     .pipe(gulp.dest('dest'));
+  gulp.src('./app/js/vendor/facepp-sdk.js')
+    .pipe(gulp.dest('dest/js/vendor'));
 });
 
 gulp.task('sass', function() {
