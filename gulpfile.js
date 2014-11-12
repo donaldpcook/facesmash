@@ -59,6 +59,7 @@ gulp.task('buildTemplates', function() {
 gulp.task('serve', function() {
   connect()
     .use(connectLivereload())
+    .use('/auth', serveStatic('dest'))
     .use(serveStatic('dest'))
     .listen(3000);
 });

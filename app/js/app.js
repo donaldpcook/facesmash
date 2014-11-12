@@ -4,11 +4,12 @@ require('angular');
 require('angular-ui-router');
 
 angular.module('facesmash', ['ui.router', 'partials'])
-  .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise('/home');
+  .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', function($urlRouterProvider, $stateProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('home', {
-      url: '/home',
+      url: '/',
       views: {
         'instagramLogin': {
           controller: 'InstagramController',
@@ -16,9 +17,22 @@ angular.module('facesmash', ['ui.router', 'partials'])
         }
       }
     });
+
+    $stateProvider.state('auth', {
+      url: '/auth/',
+      views: {
+        'instagramLogin': {
+          controller: function() {
+            console.log('here');
+          },
+          templateUrl: '/instagram/instagram.html'
+        }
+      }
+    });
   }])
 
   .factory('FacePP', require('./services/facepp'))
+  .factory('Instagram', require('./services/instagram'))
 
   .controller('InstagramController', require('./instagram/instagram'))
 

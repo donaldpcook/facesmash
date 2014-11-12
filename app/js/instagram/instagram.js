@@ -1,4 +1,7 @@
 'use strict';
 
-module.exports = function($scope) {
+module.exports = function($scope, Instagram) {
+  $scope.login = function() {
+    Instagram.login();
+  }
 };
