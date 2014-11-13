@@ -7,6 +7,10 @@ module.exports = function($scope, Instagram, Friends, FacePPService) {
     }
   }
 
+  $scope.getPhotos = function(friend) {
+    friend.getPhotos();
+  }
+
   var getFriends = function() {
     Instagram.getFollowedBy().then(function(friends) {
       Friends.setFriends(friends);

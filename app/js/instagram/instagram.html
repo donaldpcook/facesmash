@@ -7,6 +7,8 @@
         <img class="topcoat-grid__column--6 instagram-friends-image" ng-src="{{friend.profilePicture}}" ng-click="friend.setFace()" />
         <div class="topcoat-grid__column--6">
           <p>Faces in profile: {{friend.face.face.length || '0'}}</p>
+          <button class="topcoat-button" ng-click="getPhotos(friend)">Check</button>
+          <p>Photos in feed: {{friend.feed.length || '0'}}</p>
         </div>
       </li>
     </ul>
