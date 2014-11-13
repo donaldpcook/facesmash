@@ -2,9 +2,12 @@
 
 require('angular');
 require('angular-ui-router');
+require('angular-local-storage');
 
-angular.module('facesmash', ['ui.router', 'partials'])
-  .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', function($urlRouterProvider, $stateProvider, $locationProvider) {
+angular.module('facesmash', ['ui.router', 'partials', 'LocalStorageModule'])
+  .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', 'localStorageServiceProvider', function($urlRouterProvider, $stateProvider, $locationProvider, localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('facesmash');
+
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
 
@@ -19,11 +22,15 @@ angular.module('facesmash', ['ui.router', 'partials'])
     });
 
     $stateProvider.state('auth', {
-      url: '/auth/',
+      url: '/auth/:access',
       views: {
         'instagramLogin': {
-          controller: function() {
-            console.log('here');
+          controller: function($location, $state, Instagram) {
+            var hash = $location.hash();
+
+            Instagram.setToken(hash.substr(hash.indexOf('=')+1));
+
+            $state.go('home');
           },
           templateUrl: '/instagram/instagram.html'
         }

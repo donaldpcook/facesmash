@@ -1,1 +1,11 @@
-<button ng-click="login()">Log in to Instagram</button>
+<div class="instagram">
+  <button ng-click="login()">Log in to Instagram</button>
+
+  <div class="instagram-friends">
+    <ul>
+      <li ng-repeat="friend in friends">
+        <img ng-src="{{friend.profile_picture}}" />
+      </li>
+    </ul>
+  </div>
+</div>
