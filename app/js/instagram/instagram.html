@@ -4,7 +4,7 @@
   <div class="instagram-friends">
     <ul>
       <li ng-repeat="friend in friends">
-        <img ng-src="{{friend.profile_picture}}" />
+        <img ng-src="{{friend.profilePicture}}" ng-click="friend.setFace()" />
       </li>
     </ul>
   </div>

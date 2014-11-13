@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function($scope, Instagram) {
+module.exports = function($scope, Instagram, Friends, FacePPService) {
   $scope.login = function() {
     if (Instagram.login()) {
       getFriends();
@@ -9,7 +9,9 @@ module.exports = function($scope, Instagram) {
 
   var getFriends = function() {
     Instagram.getFollowedBy().then(function(friends) {
-      $scope.friends = friends;
+      Friends.setFriends(friends);
+
+      $scope.friends = Friends.friends;
     }, function() {
       // error handling
     });

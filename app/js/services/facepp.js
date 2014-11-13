@@ -1,9 +1,9 @@
 /*global module: false, console: false, FacePP: false */
+// TODO: move above to jshintrc
 
-//require('faceppsdk');
+'use strict';
 
-module.exports = function () {
-    'use strict'; 
+module.exports = function ($http, $q) {
     var facePP = this;
     facePP.defaultImageUrl = 'https://scontent-b-lga.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/164160_691464392895_3756847_n.jpg?oh=a098e5e292eb74c65bf6d5554fb7f65b&oe=54EAD461';
     facePP.apiKey = 'abf45752049a93d9f00e89123afe1ce3';
@@ -39,4 +39,33 @@ module.exports = function () {
         facePP.callback(err, result);
       });
     };
-  };
+
+// feel like we get all of the benefits of faceppsdk inside of angular already?
+  var FACE_API = 'http://apius.faceplusplus.com/v2';
+  var FACE_KEY = 'abf45752049a93d9f00e89123afe1ce3';
+  var FACE_SECRET = 'p210gti4Ek5w_CmqJLPFfdBkApfl1sxb';
+
+  var params = {
+    api_key: FACE_KEY,
+    api_secret: FACE_SECRET
+  }
+
+  return {
+    detectFace: function(img) {
+      var deferred = $q.defer();
+
+      $http.jsonp(
+        FACE_API + '/detection/detect?callback=JSON_CALLBACK',
+        {
+          params: angular.extend({
+            url: img
+          }, params)
+        }
+      ).success(function(data) {
+        deferred.resolve(data);
+      });
+
+      return deferred.promise;
+    }
+  }
+};
