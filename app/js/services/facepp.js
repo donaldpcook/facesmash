@@ -66,6 +66,24 @@ module.exports = function ($http, $q) {
       });
 
       return deferred.promise;
+    },
+
+    saveFace: function(id, name) {
+      var deferred = $q.defer();
+
+      $http.jsonp(
+        FACE_API + '/person/create?callback=JSON_CALLBACK',
+        {
+          params: angular.extend({
+            face_id: id,
+            person_name: name
+          }, params)
+        }
+      ).success(function(data) {
+        deferred.resolve(data);
+      });
+
+      return deferred.promise;
     }
   }
 };

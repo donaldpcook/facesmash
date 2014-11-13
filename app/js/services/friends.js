@@ -2,13 +2,17 @@
 
 module.exports = function(FacePPService) {
   function Friend(data) {
+    this.name = data.username;
     this.profilePicture = data.profile_picture;
   }
 
   Friend.prototype.setFace = function() {
     FacePPService.detectFace(this.profilePicture).then(function(data) {
       this.face = data;
-      debugger;
+
+      data.face.forEach(function(element) {
+        FacePPService.saveFace(element.face_id, this.name);
+      }.bind(this));
     }.bind(this));
   }
 

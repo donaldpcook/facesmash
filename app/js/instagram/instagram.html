@@ -1,10 +1,13 @@
 <div class="instagram">
-  <button ng-click="login()">Log in to Instagram</button>
+  <button class="topcoat-button" ng-click="login()">Log in to Instagram</button>
 
   <div class="instagram-friends">
-    <ul>
-      <li ng-repeat="friend in friends">
-        <img ng-src="{{friend.profilePicture}}" ng-click="friend.setFace()" />
+    <ul class="topcoat-grid">
+      <li class="topcoat-grid__row" ng-repeat="friend in friends">
+        <img class="topcoat-grid__column--6 instagram-friends-image" ng-src="{{friend.profilePicture}}" ng-click="friend.setFace()" />
+        <div class="topcoat-grid__column--6">
+          <p>Faces in profile: {{friend.face.face.length || '0'}}</p>
+        </div>
       </li>
     </ul>
   </div>
