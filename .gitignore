@@ -2,3 +2,6 @@
 dest/
 node_modules/
 .DS_store
+app/css
+npm-debug.log
+config.codekit
