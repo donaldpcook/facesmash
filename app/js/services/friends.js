@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(FacePPService, Instagram) {
+module.exports = function(FacePPService, Instagram, ImageAppender, $http) {
   function Friend(data) {
     this.name = data.username;
     this.id = data.id;
@@ -23,6 +23,21 @@ module.exports = function(FacePPService, Instagram) {
     Instagram.getPhotos(this.id).then(function(data) {
       this.feed = data;
     }.bind(this));
+  }
+
+  Friend.prototype.searchFeedForUser = function() {
+    var images = [];
+
+    this.feed.forEach(function(element) {
+      images.push(element.images.standard_resolution.url);
+      //FacePPService.detectFace(element.images.standard_resolution.url).then(function(data) {
+        //debugger;
+      //});
+    });
+
+    ImageAppender.appendImages(images).then(function(data) {
+      debugger;
+    });;
   }
 
   return {

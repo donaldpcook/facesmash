@@ -9,6 +9,10 @@ module.exports = function($scope, Instagram, Friends, FacePPService) {
 
   $scope.getPhotos = function(friend) {
     friend.getPhotos();
+
+    setTimeout(function() {
+      friend.searchFeedForUser();
+    }, 1000);
   }
 
   var getFriends = function() {

@@ -47,6 +47,7 @@ angular.module('facesmash', ['ui.router', 'partials', 'LocalStorageModule'])
   .service('FacePPService', require('./services/facepp'))
   .factory('Instagram', require('./services/instagram'))
   .factory('Friends', require('./services/friends'))
+  .factory('ImageAppender', require('./services/image-appender'))
 
   .controller('InstagramController', require('./instagram/instagram'))
   .controller('FacePPController', require('./facePP/facePP'))
