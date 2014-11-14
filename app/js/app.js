@@ -3,6 +3,7 @@
 require('angular');
 require('angular-ui-router');
 require('angular-local-storage');
+require('ionic');
 
 angular.module('facesmash', ['ui.router', 'partials', 'LocalStorageModule'])
   .config(['$urlRouterProvider', '$stateProvider', '$locationProvider', 'localStorageServiceProvider', function($urlRouterProvider, $stateProvider, $locationProvider, localStorageServiceProvider) {

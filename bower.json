@@ -1,0 +1,20 @@
+{
+  "name": "facesmash",
+  "version": "0.0.0",
+  "homepage": "https://github.com/donaldpcook/facesmash",
+  "authors": [
+    "Donald Cook <Donald.Cook@rga.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#master"
+  }
+}

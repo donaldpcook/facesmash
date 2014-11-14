@@ -5,3 +5,4 @@ node_modules/
 app/css
 npm-debug.log
 config.codekit
+bower_components

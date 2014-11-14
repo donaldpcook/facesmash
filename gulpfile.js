@@ -37,6 +37,7 @@ gulp.task('browserify', function() {
     entries: ['./app/js/app.js'],
     debug: true
   })
+  .transform('debowerify')
   .bundle()
   .on('error', handleErrors)
   .pipe(source('app.js'))
